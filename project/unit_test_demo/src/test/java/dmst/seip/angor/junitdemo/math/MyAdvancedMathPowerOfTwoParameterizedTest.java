@@ -34,9 +34,16 @@ public class MyAdvancedMathPowerOfTwoParameterizedTest {
 	 * The following method generates the input values 
 	 * for the tests. 
 	 */
+
+	//Zadacha 15 b)
 	@Parameters
 	public static Collection<Object[]> data() {
-		Object[][] data = new Object[][]{{2,4},{3,8},{4,16}};
+		Object[][] data = new Object[][]{
+				{2,4},
+				{3,8},
+				{4,16},
+				{0,1} // (0^2 = 1)
+		};
 		
 		return Arrays.asList(data);
 	}

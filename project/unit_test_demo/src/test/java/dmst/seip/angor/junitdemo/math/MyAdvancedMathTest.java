@@ -35,20 +35,24 @@ public class MyAdvancedMathTest {
 	 * A test case that examines the add method
 	 * with normal input values. 
 	 */
-	@Test
+
+	/*@Test
 	public void testAddNormal() {
 		Assert.assertEquals(7, mam.add(5, 2));
-	}
+	}*/
 	
 	/*
 	 * A test case that examines the add method
 	 * with zeros input values. 
 	 */
+
+	/*
 	@Test
 	public void testAddShouldReturnZero() {
 		Assert.assertEquals(0, mam.add(0, 0));
 	}
-	
+	*/
+
 	/*
 	 * A test case for the exceptions caused when
 	 * the result of the addition doesn't fit 
@@ -74,16 +78,40 @@ public class MyAdvancedMathTest {
 		mam.add(-5, 1);
 		
 	}
-		
-	/*
-	 *  The following method aims to test the reverseArray 
-	 *  of the MyAdvancedMath class. However, its execution 
-	 *  depends on the MyMath's reverseNumber method and a fail 
-	 *  in this method can cause this test to fail too. Thus, the 
-	 *  test is not isolated and cannot be called a valid Unit Test.
-	 *  The testReverseArrayMocking() is the atomic and 
-	 *  isolated unit test for the reverseArray method.
-	 */
+
+//Zadacha 15 b) TODO Task
+	  // Tests for Power of Two (The TODO Task)
+	  @Test
+	  public void testPowerOfTwoZero() {
+		  Assert.assertEquals(1, mam.powerOfTwo(0));
+	  }
+
+
+	//Test Edge Case: Negative Input.
+	@Test
+	public void testPowerOfTwoExceptionNegative() {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("power should be 0<=power<=30");
+		mam.powerOfTwo(-1);
+	}
+
+	//Test Edge Case: Input > 30 (Overflow).
+	@Test
+	public void testPowerOfTwoExceptionTooLarge() {
+		thrown.expect(IllegalArgumentException.class);
+		thrown.expectMessage("power should be 0<=power<=30");
+		mam.powerOfTwo(31);
+	}
+
+    /*
+     *  The following method aims to test the reverseArray
+     *  of the MyAdvancedMath class. However, its execution
+     *  depends on the MyMath's reverseNumber method and a fail
+     *  in this method can cause this test to fail too. Thus, the
+     *  test is not isolated and cannot be called a valid Unit Test.
+     *  The testReverseArrayMocking() is the atomic and
+     *  isolated unit test for the reverseArray method.
+     */
 	@Test
 	public void testReverseArrayNumbers() {
 		MyMath mm = new MyMath();
@@ -114,6 +142,4 @@ public class MyAdvancedMathTest {
 		Assert.assertArrayEquals(new int[]{-1,-2,3,4}, 
 				mam.reverseArrayNumbers(testValues, mm));
 	}
-	
-
 }

@@ -1,6 +1,8 @@
 package dmst.seip.angor.junitdemo.search;
 
 import static org.junit.Assert.*;
+
+import org.junit.Assert;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
@@ -21,6 +23,20 @@ public class NameSearchTest {
 		String[] actual = ns.findNamesInFileThatStartWith(path, fileio, "C");
 		
 		assertArrayEquals(expected, actual);
+	}
+//Zadacha 15 b)
+	@Test
+	public void testFindNames_PrefixNotFound() {
+		NameSearch ns = new NameSearch();
+		FileIO mockIO = mock(FileIO.class);
+
+		String[] mockNames = {"Alice", "Bob", "Charlie"};
+		when(mockIO.readFile(anyString())).thenReturn(mockNames);
+
+		String[] result = ns.findNamesInFileThatStartWith("dummy_path", mockIO, "Ma");
+
+		Assert.assertNotNull("Result should not be null", result);
+		Assert.assertEquals("Should find 0 matches", 0, result.length);
 	}
 	
 }
